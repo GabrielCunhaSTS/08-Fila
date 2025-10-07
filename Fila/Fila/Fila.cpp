@@ -79,6 +79,7 @@ void insere()
 {
 	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
+	NO* aux = fim;
 	if (novo == NULL)
 	{
 		return;
@@ -86,15 +87,37 @@ void insere()
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
+
+	if (inicio == NULL) {
+		inicio = novo;
+		fim = novo;
+		novo->prox = NULL;
+	}
+	else {
+		fim = novo;
+		aux->prox = novo;
+	}
+	cout << "Elemento " << novo->valor << " inserido com sucesso\n";
+
 
 
 }
 
 void remove()
 {
+	NO* aux = inicio;
+
+	if (inicio == NULL) {
+		cout << "a lista esta vazia";
+		return;
+	}
+	else {
+		inicio = inicio->prox;
+		cout << "Elemento excluido: " << aux->valor << "\n";
+		free(aux);
+	}
+
 
 
 
 }
-
